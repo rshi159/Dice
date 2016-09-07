@@ -5,9 +5,12 @@ void setup()
 }
 void draw()
 {
-	background(200);
-	bob.roll();
-	bob.show();
+	for(int x = 50; x < 250; x = x + 60)
+	{
+		Die bob = new Die(150,150);
+		bob.roll();
+		bob.show();
+	}
 }
 void mousePressed()
 {
@@ -15,23 +18,25 @@ void mousePressed()
 }
 class Die //models one single dice cube
 {
-	//variable declarations here
+	int myX, myY, value;//variable declarations here
 	Die(int x, int y) //constructor
 	{
-		//variable initializations here
+		roll();//variable initializations here
+		myX = x;
+		myY = y;
 	}
 	void roll()
 	{
-		//your code here
+		value = 1;//your code here
 	}
 	void show()
 	{
-		noFill();
-		beginShape();
-		curveVertex(200, 200);
-		curveVertex(200, 500);
-		curveVertex(500, 500);
-		curveVertex(500, 200);
-		endShape();
+		fill(255);
+		rect(myX, myY, 50, 50);
+		if(value == 1)
+		{
+			fill(50);
+			ellipse(200, 200, 50, 50);
+		}
 	}
 }
