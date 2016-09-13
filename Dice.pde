@@ -1,3 +1,5 @@
+int number = 0;
+int total = 0;
 void setup()
 {
 	size(720,720);
@@ -18,6 +20,7 @@ void draw()
 void mousePressed()
 {
 	redraw();
+	total = 0;
 }
 class Die //models one single dice cube
 {
@@ -31,13 +34,11 @@ class Die //models one single dice cube
 	void roll()
 	{
 		value = (int)(Math.random()*6+1);//your code here
-		//int number = 0;
-		//int total = 0;
-		total = total + number;
 	}
 	void show()
 	{
 		fill(255);
+		stroke(100,85);
 		rect(myX, myY, 50, 50);
 		if(value == 1)
 		{
@@ -90,5 +91,13 @@ class Die //models one single dice cube
 			ellipse(myX + 38, myY + 25, 10, 10);
 			number = 6;
 	    }
+	        total = total + number;
+	        fill(205);
+	        noStroke();
+			rect(0,650,720,710);
+			fill(255);
+			textSize(60);
+			text(total, 300, 700);
     }
 }
+
