@@ -1,5 +1,17 @@
 int number = 0;
 int total = 0;
+int ones = 0;
+int twos = 0;
+int threes = 0;
+int fours = 0;
+int fives = 0;
+int sixes = 0;
+float onesf = 0;
+float twosf = 0;
+float threesf = 0;
+float foursf = 0;
+float fivesf = 0;
+float sixesf = 0;
 void setup()
 {
 	size(720,720);
@@ -14,6 +26,7 @@ void draw()
 			Die bob = new Die(x,y);
 			bob.roll();
 			bob.show();
+			bob.percents();
 		}
 	}
 }
@@ -21,13 +34,25 @@ void mousePressed()
 {
 	redraw();
 	total = 0;
+	 ones = 0;
+	 twos = 0;
+	 threes = 0;
+	 fours = 0;
+	 fives = 0;
+	 sixes = 0;
+	 onesf = 0;
+	 twosf = 0;
+	 threesf = 0;
+	 foursf = 0;
+	 fivesf = 0;
+	 sixesf = 0;
 }
 class Die //models one single dice cube
 {
 	int myX, myY, value;//variable declarations here
 	Die(int x, int y) //constructor
 	{
-		roll();//variable initializations here
+		//roll();//variable initializations here
 		myX = x;
 		myY = y;
 	}
@@ -45,6 +70,7 @@ class Die //models one single dice cube
 			fill(50);
 			ellipse(myX + 25, myY + 25, 10, 10);
 			number = 1;
+			ones = ones + 1;
 		}
 		else if (value == 2) 
 		{
@@ -52,6 +78,7 @@ class Die //models one single dice cube
 			ellipse(myX + 15, myY + 15, 10, 10);
 			ellipse(myX + 35, myY + 35, 10, 10);
 			number = 2;
+			twos = twos + 1;
 	    }
 		else if (value == 3) 
 		{
@@ -60,6 +87,7 @@ class Die //models one single dice cube
 			ellipse(myX + 38, myY + 38, 10, 10);
 			ellipse(myX + 25, myY + 25, 10, 10);
 			number = 3;
+			threes = threes + 1;
 	    }
 		else if (value == 4) 
 		{
@@ -69,6 +97,7 @@ class Die //models one single dice cube
 			ellipse(myX + 15, myY + 35, 10, 10);
 			ellipse(myX + 35, myY + 15, 10, 10);
 			number = 4;
+			fours = fours + 1;
 	    }
 		else if (value == 5) 
 		{
@@ -79,6 +108,7 @@ class Die //models one single dice cube
 			ellipse(myX + 12, myY + 38, 10, 10);
 			ellipse(myX + 38, myY + 12, 10, 10);
 			number = 5;		
+			fives = fives + 1;
 	    }
 		else if (value == 6) 
 		{
@@ -90,14 +120,34 @@ class Die //models one single dice cube
 			ellipse(myX + 12, myY + 25, 10, 10);
 			ellipse(myX + 38, myY + 25, 10, 10);
 			number = 6;
+			sixes = sixes + 1;
 	    }
-	        total = total + number;
+	    	/*total = total + number;
 	        fill(205);
 	        noStroke();
-			rect(0,650,720,710);
+			rect(0,620,720,80);
 			fill(255);
-			textSize(60);
-			text(total, 300, 700);
+			textSize(30);
+			text("The Total is: " + total,20,680);*/
     }
+    void percents()
+    	{
+    		fill(205);
+	        noStroke();
+			rect(0,620,720,90);
+    		total = total + number;
+			fill(255);
+			textSize(30);
+			text("The Total is: " + total,20,680);
+	        textSize(18);
+			text("ones:   " + ones, 320, 650);
+			text("twos:   " + twos, 320, 675); 
+			text("threes: " + threes, 320, 700); 
+			text("fours:  " + fours, 460, 650); 
+			text("fives:  " + fives, 460, 675); 
+			text("sixes:  " + sixes, 460, 700); 
+
+
+		}
 }
 
