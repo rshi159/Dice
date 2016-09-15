@@ -6,19 +6,22 @@ int threes = 0;
 int fours = 0;
 int fives = 0;
 int sixes = 0;
-float onesf = 0;
-float twosf = 0;
-float threesf = 0;
-float foursf = 0;
-float fivesf = 0;
-float sixesf = 0;
+int time;
+int wait = 300;
 void setup()
 {
+	time = millis();
 	size(720,720);
 	noLoop();
 }
 void draw()
 {
+	if (millis() - time <= wait){
+		//bob.spin();
+	}
+	else if(millis() - time <= wait){
+		time = millis();
+	}
 	for(int x = 30; x < 690; x = x + 60)
 	{
 		for(int y = 30; y < 580; y = y + 60)
@@ -40,12 +43,6 @@ void mousePressed()
 	 fours = 0;
 	 fives = 0;
 	 sixes = 0;
-	 onesf = 0;
-	 twosf = 0;
-	 threesf = 0;
-	 foursf = 0;
-	 fivesf = 0;
-	 sixesf = 0;
 }
 class Die //models one single dice cube
 {
@@ -55,6 +52,10 @@ class Die //models one single dice cube
 		//roll();//variable initializations here
 		myX = x;
 		myY = y;
+	}
+	void spim()
+	{
+		//rect(myX, myY, spinX, 50);
 	}
 	void roll()
 	{
@@ -136,7 +137,7 @@ class Die //models one single dice cube
 	        noStroke();
 			rect(0,620,720,90);
     		total = total + number;
-			fill(255);
+			fill(90);
 			textSize(30);
 			text("The Total is: " + total,20,680);
 	        textSize(18);
